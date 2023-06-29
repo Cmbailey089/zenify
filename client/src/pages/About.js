@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Home = () => {
+const About = () => {
 return (
 	<div
 	style={{
@@ -10,9 +10,9 @@ return (
 		height: '100vh'
 	}}
 	>
-	<h1>Welcome to Zenify</h1>
+	<h1>This application is meant to help you chillax</h1>
 	</div>
 );
 };
 
-export default Home;
+export default About;
