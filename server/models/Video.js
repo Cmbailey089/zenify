@@ -6,9 +6,15 @@ const videoSchema = new Schema({
         required:true
     },
     url: {
-        type:String,
+        type: String,
         required: true
-    }
+    },
+    tags: [
+        {
+            type: String,
+            trim:true
+        }
+    ]
 });
 
 const Video = model('Video', videoSchema)
