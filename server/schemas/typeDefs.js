@@ -15,7 +15,15 @@ const typeDefs = gql`
         _id: ID!
         username: String!
         email: String!
+        password: String!
     }
+
+    type Video {
+        _id: ID!
+        title: String!
+        url: String!
+    }
+
     type Auth {
         token: String!
         user: User!
