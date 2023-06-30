@@ -21,7 +21,8 @@ const typeDefs = gql`
     type Video {
         _id: ID!
         title: String!
-        url: String!
+       url:String!
+       tags:[String]
     }
 
     type Auth {
