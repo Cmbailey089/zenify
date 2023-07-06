@@ -10,7 +10,6 @@ const resolvers = {
             if(context.user){
                 return await User.findOne({_id: context.user._id})
             } 
-
             throw new AuthenticationError('You are not logged in.')
         },
         getResults: async (parent)=>{
