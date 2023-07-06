@@ -1,5 +1,5 @@
 const db = require('../config/connection');
-const { Video } = ('../models');
+const { Video } = require('../models');
 const videoSeed = require('./Video.json');
 
 db.once('open', async () => {
