@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
-import SignUp from './pages/Signup';
+import SignUp from './components/Signup/Signup';
 
 function App() {
   return (

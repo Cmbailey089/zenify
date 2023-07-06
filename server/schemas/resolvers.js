@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+// TODO: Create "Results" model
+const { User, Result } = require('../models');
 const {signToken} = require('../utils/auth')
 
 const resolvers = {
@@ -7,9 +8,26 @@ const resolvers = {
         me: async (parent, args, context)=>{
             console.log(context)
             if(context.user){
-                return User.findOne({_id: context.user._id})
+                return await User.findOne({_id: context.user._id})
             } 
             throw new AuthenticationError('You are not logged in.')
+        },
+        getResults: async (parent)=>{
+            const results = await Result.findAll()
+            return results
+        },
+        searchResults: async (parent, {title, type, tags})=>{
+            let criteria = {
+                title: title
+            }
+            if(type){
+                criteria.type = type
+            }
+            if(tags){
+                criteria.tags = tags
+            }
+            const results = await Result.find(criteria)
+            return results
         }
     },
     Mutation: {
@@ -37,6 +55,10 @@ const resolvers = {
             const token = signToken(user)
 
             return {token, user}
+        },
+        addResult: async(parent, {title, type, payload, tags})=>{
+            const result = await Result.create({title, type, payload, tags})
+            return result
         }
     },
 };
