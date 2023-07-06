@@ -4,11 +4,14 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
     type Query {
         me: User
+        getResults: [Result]
+        searchResults(title: String!, type: Type, tags: [String]):[Result]
     }
 
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
+        addResult(title: String!, type: Type!, payload: Video!, tags: [String]) 
     }
 
     type User {
@@ -28,6 +31,18 @@ const typeDefs = gql`
     type Auth {
         token: String!
         user: User!
+    }
+
+    type Result {
+        _id: ID!
+        title: String!
+        type: Type!
+        payload: Video!
+        tags:[String]
+    }
+    type Type {
+        _id: ID!
+        name: String!
     }
 `
 module.exports = typeDefs
