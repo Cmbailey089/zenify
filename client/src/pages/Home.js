@@ -3,6 +3,8 @@ import React from 'react';
 const Home = () => {
 return (
 	<div
+
+	// Would like to move these styles to seperate files
 	style={{
 		display: 'flex',
 		justifyContent: 'Right',
