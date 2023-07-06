@@ -5,10 +5,12 @@ const SignUp = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
   
-	// ...form submission and validation logic will be added here
+	// ...form submission and validation logic can be added here
   
 	return (
 	  <div
+
+	  	// Would like to move these styles to seperate files
 		style={{
 		  display: 'flex',
 		  justifyContent: 'center',
