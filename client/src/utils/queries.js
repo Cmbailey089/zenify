@@ -10,3 +10,13 @@ export const QUERY_USERS = gql`
     }
   }
 `
+
+export const QUERY_VIDEOS = gql`
+  query videos {
+    videos {
+      _id
+      title
+      url
+    }
+  }
+`;
