@@ -14,7 +14,7 @@ const resolvers = {
             throw new AuthenticationError('You are not logged in.')
         },
         getResults: async (parent)=>{
-            const results = await Result.findAll()
+            const results = await Result.find()
             return results
         },
         searchResults: async (parent, {title, type, tags})=>{
