@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const {videoSchema} = require('./Video')
 
 const resultSchema = new Schema({
   title: {
@@ -10,7 +11,7 @@ const resultSchema = new Schema({
     required: true,
   },
   payload: {
-    type: Schema.Types.Mixed,
+    type: videoSchema,
     required: true,
   },
   tags: {
