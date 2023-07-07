@@ -5,13 +5,13 @@ const typeDefs = gql`
     type Query {
         me: User
         getResults: [Result]
-        searchResults(title: String!, type: Type, tags: [String]):[Result]
+        searchResults(title: String!, type: String!, tags: [String]):[Result]
     }
 
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        addResult(title: String!, type: Type!, payload: Video!, tags: [String]) 
+        addResult(title: String!, type: String!, payload: Video!, tags: [String]): Result 
     }
 
     type User {
@@ -36,7 +36,7 @@ const typeDefs = gql`
     type Result {
         _id: ID!
         title: String!
-        type: Type!
+        type: String!
         payload: Video!
         tags:[String]
     }
