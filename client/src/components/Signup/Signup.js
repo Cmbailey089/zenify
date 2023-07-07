@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Signupstyles.css'
 
 const SignUp = () => {
 	const [username, setUsername] = useState('');
@@ -8,16 +9,7 @@ const SignUp = () => {
 	// ...form submission and validation logic can be added here
   
 	return (
-	  <div
-
-	  	// Would like to move these styles to seperate files
-		style={{
-		  display: 'flex',
-		  justifyContent: 'center',
-		  alignItems: 'center',
-		  height: '100vh'
-		}}
-	  >
+	  <div>
 		<form>
 		  <h1>Sign Up</h1>
 		  <input

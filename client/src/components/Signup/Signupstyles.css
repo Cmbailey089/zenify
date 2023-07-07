@@ -1,0 +1,10 @@
+form {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 8px;
+  /* padding: 10px; */
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+}
