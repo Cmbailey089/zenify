@@ -11,7 +11,7 @@ const typeDefs = gql`
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        addResult(title: String!, type: Type!, payload: Video!, tags: [String]) 
+        addResult(title: String!, type: Type!, payload: Video!, tags: [String]): Result
     }
 
     type User {
@@ -21,7 +21,7 @@ const typeDefs = gql`
         password: String!
     }
 
-    type Video {
+    input Video {
         _id: ID!
         title: String!
        url:String!
@@ -36,11 +36,11 @@ const typeDefs = gql`
     type Result {
         _id: ID!
         title: String!
-        type: Type!
-        payload: Video!
+        type: String!
+        payload: String!
         tags:[String]
     }
-    type Type {
+    input Type {
         _id: ID!
         name: String!
     }

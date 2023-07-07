@@ -1,7 +1,10 @@
 [
     {
         "title":"yoga for stress",
-        "url":"https://www.youtube.com/watch?v=8TuRYV71Rgo"
+        "url":"https://www.youtube.com/watch?v=8TuRYV71Rgo",
+        "tags": [
+            "video"
+        ]
     },
     {
         "title":"Pink noise",
