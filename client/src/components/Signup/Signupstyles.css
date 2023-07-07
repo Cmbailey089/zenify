@@ -3,8 +3,12 @@ form {
   flex-direction: column;
   border: 2px solid black;
   border-radius: 8px;
-  /* padding: 10px; */
+  padding: 20px;
   margin: 10px;
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   justify-content: center;
   align-items: center;
 }
