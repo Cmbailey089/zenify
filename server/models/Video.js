@@ -19,4 +19,4 @@ const videoSchema = new Schema({
 
 const Video = model('Video', videoSchema)
 
-module.exports = Video
+module.exports = {Video, videoSchema}
