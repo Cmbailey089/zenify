@@ -1,9 +1,10 @@
 form {
+  background-color: turquoise;
   display: flex;
   flex-direction: column;
   border: 2px solid black;
   border-radius: 8px;
-  padding: 20px;
+  padding: 50px;
   margin: 10px;
   position:absolute;
   top: 50%;
@@ -11,4 +12,20 @@ form {
   transform: translate(-50%, -50%);
   justify-content: center;
   align-items: center;
+}
+
+input {
+  padding: 20px;
+  margin: 5px;
+  border-radius: 8px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: purple;
+}
+
+button {
+  background-color: turquoise;
+  border-radius: 8px;
 }
