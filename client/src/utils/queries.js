@@ -9,7 +9,7 @@ export const QUERY_USERS = gql`
       password
     }
   }
-`;
+`
 
 export const QUERY_VIDEOS = gql`
   query videos {
