@@ -1,21 +1,15 @@
 import React, { useState } from 'react';
+import './Signupstyles.css'
 
 const SignUp = () => {
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
   
-	// ...form submission and validation logic will be added here
+	// ...form submission and validation logic can be added here
   
 	return (
-	  <div
-		style={{
-		  display: 'flex',
-		  justifyContent: 'center',
-		  alignItems: 'center',
-		  height: '100vh'
-		}}
-	  >
+	  <div>
 		<form>
 		  <h1>Sign Up</h1>
 		  <input
