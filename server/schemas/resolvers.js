@@ -28,6 +28,10 @@ const resolvers = {
             }
             const results = await Result.find(criteria)
             return results
+        },
+        getVideos: async (parent)=>{
+            const videos = Result.find({type:"video"})
+            return videos
         }
     },
     Mutation: {
