@@ -57,3 +57,10 @@ export const Heading = styled.p`
   margin-bottom: 40px;
   font-weight: bold;
 `;
+
+export const Logo =  styled.section `
+  display: flex;
+  justify-content: space-between;
+  height: 143px;
+  width: auto;
+`
