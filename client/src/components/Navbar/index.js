@@ -15,7 +15,7 @@ const Navbar = () => {
         <Bars />
 
         <NavMenu>
-          <NavLink to="/" activeStyle>
+          <NavLink to="/" activeStyle={{ fontSize: "24px", fontWeight: "bold" }}>
             Home
           </NavLink>
           <NavLink to="/about" activeStyle>
