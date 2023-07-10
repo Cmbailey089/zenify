@@ -7,13 +7,16 @@ import {
   NavBtn,
   NavBtnLink,
 } from "./NavbarElements";
+import VideoLogo from "./VideoLogo"; // Updated import statement
 
 const Navbar = () => {
   return (
     <>
       <Nav>
+        <VideoLogo /> {/* Updated component usage */}
+        
         <Bars />
-
+        
         <NavMenu>
           <NavLink to="/" activeStyle>
             Home
@@ -27,8 +30,6 @@ const Navbar = () => {
           <NavLink to="/sign-up" activeStyle>
             Sign Up
           </NavLink>
-          {/* Second Nav */}
-          {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
         <NavBtn>
           <NavBtnLink to="/signin">Sign In</NavBtnLink>
@@ -39,3 +40,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
