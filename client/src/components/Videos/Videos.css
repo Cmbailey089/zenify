@@ -1,9 +1,9 @@
 .videos-container {
-    max-width: 800px;
+    max-width: 50%;
     margin: 0 auto;
     padding: 20px;
     font-family: Arial, sans-serif;
-    color: #333;
+    color: #090909;
   }
   
   .category {
@@ -54,5 +54,12 @@
     .video-list {
       grid-template-columns: repeat(2, 1fr);
     }
+    .video-wrapper {
+      padding-bottom: 175%;
+      
+    }
+    .videos-container {
+    max-width: 100%;
+  }
   }
   
