@@ -2,11 +2,13 @@ const router = require('express').Router();
 const {
     getAllResults,
     searchResults,
-    createResult
+    createResult,
+    getVideos
   } = require('../../controllers/result-controller');
 
   router.route('/').get(getAllResults)
-  router.route('/').get(searchResults)
+  router.route('/search').get(searchResults)
   router.route('/').post(createResult)
+  router.route('/videos').get(getVideos)
 
   module.exports = router
