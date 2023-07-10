@@ -13,6 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^5.1.0"
+    "concurrently": "^5.1.0",
+    "react-responsive-carousel": "^3.2.23"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
