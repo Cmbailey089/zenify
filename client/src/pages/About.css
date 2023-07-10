@@ -136,3 +136,22 @@
     transition: background-color 0.3s ease-in-out;
   }
   
+  /* Media Queries */
+
+@media (max-width: 768px) {
+    .faq-container {
+      padding: 10px;
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  
+    .faq-item {
+      padding: 15px;
+    }
+  
+    .question {
+      font-size: 20px;
+    }
+  }
