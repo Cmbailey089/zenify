@@ -6,14 +6,19 @@ import {
   Column,
   FooterLink,
   Heading,
+  Logo,
 } from "./Footerstyles";
+import VideoLogo from "../Navbar/VideoLogo";
 
 const Footer = () => {
   return (
     <Box>
       <Container>
         <Row>
-          <h1 style={{ color: "green", paddingTop: "20px"}}>Zenify</h1>
+          <Logo>
+            <VideoLogo />
+            <h1 style={{ color: "green", paddingTop: "20px" }}>Zenify</h1>
+          </Logo>
           <Column>
             <Heading>About Us</Heading>
             <FooterLink href="#">Aim</FooterLink>
@@ -23,7 +28,12 @@ const Footer = () => {
 
           <Column>
             <Heading>Contact Us</Heading>
-            <FooterLink href="https://github.com/Cmbailey089/zenify" target="_blank">GitHub</FooterLink>
+            <FooterLink
+              href="https://github.com/Cmbailey089/zenify"
+              target="_blank"
+            >
+              GitHub
+            </FooterLink>
             {/* <FooterLink href="#">Ahemdabad</FooterLink>
             <FooterLink href="#">Indore</FooterLink>
             <FooterLink href="#">Mumbai</FooterLink> */}
