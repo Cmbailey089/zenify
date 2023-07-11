@@ -81,7 +81,7 @@ const App = () => {
                   classNames="page-transition"
                 >
                   <Switch location={location}>
-                    <Route exact path="/" component={Home} />
+                    <Route exact path="/" render={() => <Home loggedIn={loggedIn} />} />
                     <Route path="/about" component={About} />
                     <Route path="/videos" component={Videos} />
                     <Route path="/sign-up">

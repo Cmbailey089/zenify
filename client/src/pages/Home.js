@@ -14,9 +14,9 @@ const Home = ({ loggedIn }) => {
         <p>
           Discover various techniques and resources to manage stress and find relaxation in your daily life. Our application offers a range of stress relief practices, including meditation, breathing exercises, mindfulness, and more.
         </p>
-        <Link to="/sign-in" className="get-started-btn">
-          {loggedIn ? 'Go to Dashboard' : 'Get Started'}
-        </Link>
+        {!loggedIn && (
+          <Link to="/sign-in" className="get-started-btn">Sign In</Link>
+        )}
         {loggedIn && (
           <div className="features">
             <div className="feature-item">
@@ -39,3 +39,5 @@ const Home = ({ loggedIn }) => {
 };
 
 export default Home;
+
+
