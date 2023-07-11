@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Box = styled.div`
   padding: 0px 0px;
   background: black;
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
 
@@ -57,3 +57,10 @@ export const Heading = styled.p`
   margin-bottom: 40px;
   font-weight: bold;
 `;
+
+export const Logo =  styled.section `
+  display: flex;
+  justify-content: space-between;
+  height: 143px;
+  width: auto;
+`
