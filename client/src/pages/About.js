@@ -1,19 +1,23 @@
 import React from 'react';
 import './About.css';
-
+import backgroundImg from '../Images/lavander2.jpg';
 
 const FAQ = () => {
 	return (
+		
 		<div className="faq-container">
+			<div className="background">
+        <img src={backgroundImg} alt="Background" />
+      </div>
 			<h2>Frequently Asked Questions</h2>
-			<div className="faq-item">
+			{/* <div className="faq-item">
 				<h3 className="question">Questionnaire about stress level?</h3>
 				<p className="answer">
 					If you have time or if you want to delve deeper into understanding your stress levels,
 					we offer a questionnaire that can help assess and evaluate your stress level.
 					This questionnaire consists of a series of questions that you can answer to gain insights into your stress levels.
 				</p>
-			</div>
+			</div> */}
 			<div className="faq-item">
 				<h3 className="question">How can I reduce stress in my daily life?</h3>
 				<p className="answer">

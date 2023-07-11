@@ -1,9 +1,10 @@
 import React from 'react';
-import './Videos.css'
+import './Videos.css';
+import backgroundImg from '../Videos/lavander2.jpg';
 
 const Videos = () => {
   return (
-    <div>
+    <div style={{ backgroundImage: `url(${backgroundImg})`}}>
       <h2>Browse</h2>
       <div className="videos-container">
         <div className="category">
