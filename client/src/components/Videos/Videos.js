@@ -1,8 +1,16 @@
 import React from 'react';
 import './Videos.css';
 import backgroundImg from '../Videos/lavander2.jpg';
+import {GATHER_VIDEOS} from '../../utils/queries'
+import { useQuery } from '@apollo/client';
+
 
 const Videos = () => {
+
+  const {loading, data} = useQuery(GATHER_VIDEOS)
+
+  const videos = data?.getVideos
+
   return (
     <div style={{ backgroundImage: `url(${backgroundImg})`}}>
       <h2>Browse</h2>
@@ -10,7 +18,19 @@ const Videos = () => {
         <div className="category">
           <h3>Exercises</h3>
           <div className="video-list">
-            <div className="video-wrapper">
+            {videos?.map(val=>{
+              const {title, url} = val.payload
+              return (
+                <div className="video-wrapper">
+                  <iframe 
+                  title={title}
+                  src={url}
+                    allowFullScreen></iframe>
+                  <span>Exercise Video 1</span>
+                </div>
+              )
+            })}
+            {/* <div className="video-wrapper">
             <iframe 
             title="Exercise video 1"
              src="https://www.youtube.com/embed/4pLUleLdwY4"
@@ -150,7 +170,7 @@ const Videos = () => {
                 allowFullScreen
               ></iframe>
               <span>Meditation Video 9</span>
-            </div>
+            </div> */}
           </div>
         </div>
         {/* Add more categories with video embed code */}
