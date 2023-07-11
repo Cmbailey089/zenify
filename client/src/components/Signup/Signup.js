@@ -55,30 +55,23 @@ const SignUp = () => {
         <input
           className="signup-input"
           type="text"
-
-		  name="username"
+		      name="username"
           placeholder="Username"
         //   value={userFormData.username}
           onChange={handleChange}
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
         />
         <input
           className="signup-input"
           type="email"
-		  name='email'
-          placeholder="Email"
+		      name='email'
         //   value={userFormData.email}
           onChange={handleChange}
           placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           className="signup-input"
           type="password"
-		  name='password'
+		      name='password'
           placeholder="Password"
         //   value={userFormData.password}
           onChange={handleChange}
@@ -94,14 +87,9 @@ const SignUp = () => {
                 {error.message}
               </div>
             )}
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
         <button className="signup-submit-btn" type="submit">
           Sign Up
         </button>
-      </form>
     </div>
   );
 };
