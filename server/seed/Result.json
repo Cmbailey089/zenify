@@ -1,0 +1,32 @@
+[
+    {
+        "payload": {
+          "title": "Exercise video 1",
+          "url": "https://www.youtube.com/embed/4pLUleLdwY4",
+          "tags": []
+        },
+        "title": "Exercise video 1",
+        "tags": [],
+        "type": "video"
+      },
+      {
+        "payload": {
+          "title": "Exercise video 2",
+          "url": "https://www.youtube.com/embed/B4kNiCWTl7M",
+          "tags": []
+        },
+        "title": "Exercise video 2",
+        "tags": [],
+        "type": "video"
+      },
+      {
+        "payload": {
+          "title": "Exercise Video 3",
+          "url": "https://www.youtube.com/embed/8TuRYV71Rgo",
+          "tags": []
+        },
+        "title": "Exercise Video 3",
+        "tags": [],
+        "type": "video"
+      }
+]
