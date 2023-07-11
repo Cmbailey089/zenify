@@ -2,8 +2,10 @@ import React from 'react';
 import { Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink } from './NavbarElements';
 import VideoLogo from './VideoLogo';
 import { Link } from 'react-router-dom';
+import LoggedInIndicator from './LoggedInIndicator';
+import SignOut from './SignOut';
 
-const Navbar = ({ loggedIn, username }) => {
+const Navbar = ({ loggedIn, username, handleSignOut }) => {
   console.log('loggedIn:', loggedIn);
   console.log('username:', username);
 
@@ -22,7 +24,12 @@ const Navbar = ({ loggedIn, username }) => {
           <NavLink to="/videos" activeStyle>
             <button className="nav-link-button">Videos</button>
           </NavLink>
-          {!loggedIn ? (
+          {loggedIn ? (
+            <>
+              <LoggedInIndicator username={username} />
+              <button className="nav-link-button" onClick={handleSignOut}>Sign Out</button>
+            </>
+          ) : (
             <>
               <NavLink to="/sign-up" activeStyle>
                 <button className="nav-link-button">Sign up</button>
@@ -31,7 +38,7 @@ const Navbar = ({ loggedIn, username }) => {
                 <button className="nav-link-button">Sign In</button>
               </NavLink>
             </>
-          ) : null}
+          )}
         </NavMenu>
       </Nav>
     </>

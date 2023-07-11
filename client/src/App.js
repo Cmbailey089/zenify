@@ -33,7 +33,7 @@ const client = new ApolloClient({
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem('id_token');
@@ -42,17 +42,27 @@ const App = () => {
       setUsername(localStorage.getItem('username'));
     } else {
       setLoggedIn(false);
-      setUsername('');
+      setUsername(null);
     }
   }, []);
 
   const handleSignIn = (token, username) => {
     localStorage.setItem('id_token', token);
-    localStorage.setItem('username', username);
+    localStorage.setItem('username', username || '');
     setLoggedIn(true);
-    setUsername(username);
+    setUsername(username || '');
     console.log('User signed in:', { username });
     console.log('Token:', token);
+  };
+  
+  
+
+  const handleSignOut = () => {
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('username');
+    setLoggedIn(false);
+    setUsername(null);
+    console.log('User signed out');
   };
 
   console.log('App - loggedIn:', loggedIn);
@@ -62,7 +72,7 @@ const App = () => {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <Navbar loggedIn={loggedIn} username={username} />
+          <Navbar loggedIn={loggedIn} username={username} handleSignOut={handleSignOut} />
           <Route
             render={({ location }) => {
               const locationKey = location.pathname;
