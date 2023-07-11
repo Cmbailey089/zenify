@@ -15,23 +15,23 @@ const Navbar = () => {
         <Bars />
 
         <NavMenu>
-          <NavLink to="/" activeStyle={{ fontSize: "24px", fontWeight: "bold" }}>
-            Home
+          <NavLink to="/" activeStyle>
+          <button className="nav-link-button">Home</button>
           </NavLink>
           <NavLink to="/about" activeStyle>
-            About
+          <button className="nav-link-button">About</button>
           </NavLink>
           <NavLink to="/videos" activeStyle>
-            Videos
+          <button className="nav-link-button">Videos</button>
           </NavLink>
           <NavLink to="/sign-up" activeStyle>
-            Sign Up
+          <button className="nav-link-button">Sign up</button>
           </NavLink>
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
         <NavBtn>
-          <NavBtnLink to="/signin">Sign In</NavBtnLink>
+        <button className="sign-in-button">Sign In</button>
         </NavBtn>
       </Nav>
     </>
