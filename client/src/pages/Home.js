@@ -1,5 +1,6 @@
 import React from 'react';
 import './Home.css';
+import { Link } from 'react-router-dom'
 import backgroundImg from '../Images/desktop-wallpaper-stress-relief-background-44305.jpg';
 
 const Home = () => {
@@ -13,7 +14,7 @@ const Home = () => {
         <p>
           Discover various techniques and resources to manage stress and find relaxation in your daily life. Our application offers a range of stress relief practices, including meditation, breathing exercises, mindfulness, and more.
         </p>
-        <button className="get-started-btn">Get Started</button>
+        <Link to='sign-in' className="get-started-btn">Get Started</Link>
         <div className="features">
           <div className="feature-item">
             <h3>Stress Management Tips</h3>
