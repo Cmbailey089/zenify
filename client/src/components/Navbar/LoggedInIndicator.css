@@ -1,0 +1,13 @@
+.loggedin-indicator {
+    /* background-color: rgb(50, 197, 53); */
+    padding: 4px;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 16px;
+    
+  }
+  
+  .loggedin-indicator p {
+    color: rgb(241, 236, 244);
+  }
+  
