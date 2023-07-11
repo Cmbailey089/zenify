@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Signupstyles.css';
+import backgroundImg from '../Signup/meditation.jpg';
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
@@ -9,7 +10,15 @@ const SignUp = () => {
   // ...form submission and validation logic can be added here
 
   return (
-    <div className="signup-container">
+    <div className="signup-container"
+     style={{
+       backgroundImage: `url(${backgroundImg})`,
+       backgroundSize: 'cover',
+       backgroundPosition: 'center',
+       backgroundRepeat: 'no-repeat',
+        }}>
+      
+      <div className="background"></div>
       <form className="signup-form">
         <h1 className="signup-title">Sign Up</h1>
         <input

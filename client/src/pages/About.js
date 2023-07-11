@@ -1,13 +1,13 @@
 import React from 'react';
 import './About.css';
-// import backgroundImg from '../Images/lavander2.jpg';
+import backgroundImg from '../Images/lavander2.jpg';
 
 const FAQ = () => {
 	return (
 		
 		<div className="faq-container">
 			<div className="background">
-        {/* <img src={backgroundImg} alt="Background" /> */}
+        <img src={backgroundImg} alt="Background" />
       </div>
 			<h2>Frequently Asked Questions</h2>
 			{/* <div className="faq-item">
