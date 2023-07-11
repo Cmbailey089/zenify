@@ -1,9 +1,9 @@
 import React from 'react';
 import './Home.css';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import backgroundImg from '../Images/desktop-wallpaper-stress-relief-background-44305.jpg';
 
-const Home = () => {
+const Home = ({ loggedIn }) => {
   return (
     <div className="home-container">
       <div className="background">
@@ -14,24 +14,30 @@ const Home = () => {
         <p>
           Discover various techniques and resources to manage stress and find relaxation in your daily life. Our application offers a range of stress relief practices, including meditation, breathing exercises, mindfulness, and more.
         </p>
-        <Link to='sign-in' className="get-started-btn">Get Started</Link>
-        <div className="features">
-          <div className="feature-item">
-            <h3>Stress Management Tips</h3>
-            <p>Explore helpful tips and strategies to effectively manage stress in your life.</p>
+        {!loggedIn && (
+          <Link to="/sign-in" className="get-started-btn">Sign In</Link>
+        )}
+        {loggedIn && (
+          <div className="features">
+            <div className="feature-item">
+              <h3>Stress Management Tips</h3>
+              <p>Explore helpful tips and strategies to effectively manage stress in your life.</p>
+            </div>
+            <div className="feature-item">
+              <h3>Guided Meditation</h3>
+              <p>Experience guided meditation sessions to relax your mind and reduce stress levels.</p>
+            </div>
+            <div className="feature-item">
+              <h3>Breathing Exercises</h3>
+              <p>Learn different breathing techniques that can help calm your mind and relieve stress.</p>
+            </div>
           </div>
-          <div className="feature-item">
-            <h3>Guided Meditation</h3>
-            <p>Experience guided meditation sessions to relax your mind and reduce stress levels.</p>
-          </div>
-          <div className="feature-item">
-            <h3>Breathing Exercises</h3>
-            <p>Learn different breathing techniques that can help calm your mind and relieve stress.</p>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
 };
 
 export default Home;
+
+
