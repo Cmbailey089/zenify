@@ -20,3 +20,18 @@ mutation addUser(username: String!, email: String!, password: String!){
     }
 }
 `;
+
+export const ADD_RESULT = gql`
+mutation AddResult($title: String!, $type: String!, $payload: Video_Input!) {
+  addResult(title: $title, type: $type, payload: $payload) {
+    payload {
+      tags
+      title
+      url
+    }
+    tags
+    title
+    type
+  }
+}
+`
