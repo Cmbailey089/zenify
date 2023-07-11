@@ -6,6 +6,7 @@ const typeDefs = gql`
         me: User
         getResults: [Result]
         searchResults(title: String!, type: String!, tags: [String]):[Result]
+        getVideos: [Result]
     }
 
     type Mutation {
