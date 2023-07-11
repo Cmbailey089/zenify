@@ -11,12 +11,61 @@ export const QUERY_USERS = gql`
   }
 `
 
-export const QUERY_VIDEOS = gql`
-  query videos {
-    videos {
-      _id
+export const QUERY_ME = gql`
+query me{
+  me{
+    _id
+    username
+    email
+  }
+}
+`
+
+export const GATHER_VIDEOS = gql`
+  query getVideos{
+    getVideos{
+      payload {
+        title
+        url
+        tags
+      }
       title
-      url
+      tags
+      type
     }
   }
 `;
+
+export const GATHER_RESULTS = gql`
+query GetResults {
+  getResults {
+    payload {
+      tags
+      title
+      url
+      _id
+    }
+    tags
+    title
+    type
+    _id
+  }
+}
+`
+
+export const SEARCH_RESULTS = gql`
+query SearchResults($title: String!, $type: String!, $tags: [String]) {
+  searchResults(title: $title, type: $type, tags: $tags) {
+    _id
+    payload {
+      _id
+      tags
+      title
+      url
+    }
+    tags
+    title
+    type
+  }
+}
+`
