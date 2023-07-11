@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Signupstyles.css';
-import backgroundImg from '../Signup/meditation.jpg';
+import backgroundImg from '../../Images/meditation.jpg';
 
 import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
