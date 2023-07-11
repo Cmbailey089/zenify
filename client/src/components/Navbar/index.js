@@ -22,7 +22,7 @@ const Navbar = ({ loggedIn, username }) => {
           <NavLink to="/videos" activeStyle>
             <button className="nav-link-button">Videos</button>
           </NavLink>
-          {loggedIn && (
+          {!loggedIn ? (
             <>
               <NavLink to="/sign-up" activeStyle>
                 <button className="nav-link-button">Sign up</button>
@@ -31,7 +31,7 @@ const Navbar = ({ loggedIn, username }) => {
                 <button className="nav-link-button">Sign In</button>
               </NavLink>
             </>
-          )}
+          ) : null}
         </NavMenu>
       </Nav>
     </>
@@ -39,4 +39,3 @@ const Navbar = ({ loggedIn, username }) => {
 };
 
 export default Navbar;
-
