@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../../utils/mutations';
+import { useHistory } from 'react-router-dom';
 import './Signinstyles.css';
 
 const SignIn = ({ handleSignIn }) => {
@@ -8,6 +9,7 @@ const SignIn = ({ handleSignIn }) => {
   const [password, setPassword] = useState('');
 
   const [login, { error }] = useMutation(LOGIN);
+  const history = useHistory();
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +29,9 @@ const SignIn = ({ handleSignIn }) => {
       // Reset form fields after successful sign-in
       setEmail('');
       setPassword('');
+
+      // Redirect to home page
+      history.push('/');
     } catch (err) {
       // Sign in failed
       // Handle error or display error message
