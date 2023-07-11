@@ -22,7 +22,7 @@ const Footer = () => {
           </Logo>
           <Column>
             <Heading>About Us</Heading>
-            <AimButton to="/about-us">Aim</AimButton>
+            <AimButton to="/about-us">Team</AimButton>
           </Column>
 
           <Column>
