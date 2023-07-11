@@ -1,103 +1,73 @@
 import React, { useState } from 'react';
 import './Signupstyles.css';
-import backgroundImg from '../../Images/meditation.jpg';
-
-import { ADD_USER } from '../../utils/mutations';
-import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../../utils/mutations';
 
 const SignUp = () => {
-	const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-	const [validated] = useState(false);
+  const [addUser, { error }] = useMutation(ADD_USER);
 
-	const [showAlert, setShowAlert] = useState(false);
-	const [addUser, { error }] = useMutation(ADD_USER);
-  
-	const handleChange = (event) => {
-	  const { name, value } = event.target;
-	  setUserFormData({ ...userFormData, [name]: value });
-	};
-  
-	const handleFormSubmit = async (event) => {
-	  event.preventDefault();
-  
-	  const form = event.currentTarget;
-	  if (form.checkValidity() === false) {
-		event.preventDefault();
-		event.stopPropagation();
-	  }
-  
-	  try {
-		console.log(userFormData)
-		const { data } = await addUser({
-		  variables: { ...userFormData}
-		})
-  
-		Auth.login(data.addUser.token);
-	  } catch (err) {
-		console.error(err);
-		setShowAlert(true);
-	  }
-  
-	  setUserFormData({
-		username: '',
-		email: '',
-		password: '',
-	  });
-	};
+  const handleSignUp = async (e) => {
+    e.preventDefault();
 
-  // ...form submission and validation logic can be added here
+    try {
+      const { data } = await addUser({
+        variables: {
+          username,
+          email,
+          password,
+        },
+      });
+
+      // Handle successful sign-up, e.g., redirect or show success message
+      console.log('User created:', data);
+
+      // Reset form fields after successful submission
+      setUsername('');
+      setEmail('');
+      setPassword('');
+    } catch (err) {
+      // Handle error during sign-up, e.g., display error message
+      console.error('Sign-up error:', err);
+    }
+  };
 
   return (
-    <div className="signup-container"
-     style={{
-       backgroundImage: `url(${backgroundImg})`,
-       backgroundSize: 'cover',
-       backgroundPosition: 'center',
-       backgroundRepeat: 'no-repeat',
-        }}>
-      
-      <div className="background"></div>
-      <form className="signup-form">
+    <div className="signup-container">
+      <form className="signup-form" onSubmit={handleSignUp}>
         <h1 className="signup-title">Sign Up</h1>
         <input
           className="signup-input"
           type="text"
-		      name="username"
           placeholder="Username"
-        //   value={userFormData.username}
-          onChange={handleChange}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
         <input
           className="signup-input"
           type="email"
-		      name='email'
-        //   value={userFormData.email}
-          onChange={handleChange}
           placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           className="signup-input"
           type="password"
-		      name='password'
           placeholder="Password"
-        //   value={userFormData.password}
-          onChange={handleChange}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="signup-submit-btn" type="submit" validated={validated ? true : undefined} onClick={handleFormSubmit}>
+        <button className="signup-submit-btn" type="submit">
           Sign Up
         </button>
+        {error && <p>Error occurred during sign-up. Please try again.</p>}
       </form>
-	  {error && (
-              <div className="alert" 
-			  dismissible onClose={() => setShowAlert(false)} 
-			  show={showAlert}>
-                {error.message}
-              </div>
-            )}
     </div>
   );
 };
 
 export default SignUp;
+
