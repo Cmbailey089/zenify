@@ -9,7 +9,7 @@ export const QUERY_USERS = gql`
       password
     }
   }
-`
+`;
 
 export const QUERY_ME = gql`
 query me{
@@ -19,7 +19,7 @@ query me{
     email
   }
 }
-`
+`;
 
 export const GATHER_VIDEOS = gql`
   query getVideos{
@@ -51,7 +51,7 @@ query GetResults {
     _id
   }
 }
-`
+`;
 
 export const SEARCH_RESULTS = gql`
 query SearchResults($title: String!, $type: String!, $tags: [String]) {
@@ -68,4 +68,4 @@ query SearchResults($title: String!, $type: String!, $tags: [String]) {
     type
   }
 }
-`
+`;

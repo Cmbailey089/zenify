@@ -27,6 +27,7 @@ const SignUp = () => {
 	  }
   
 	  try {
+		console.log(userFormData)
 		const { data } = await addUser({
 		  variables: { ...userFormData}
 		})
@@ -51,22 +52,25 @@ const SignUp = () => {
         <input
           className="signup-input"
           type="text"
+		  name="username"
           placeholder="Username"
-          value={userFormData.username}
+        //   value={userFormData.username}
           onChange={handleChange}
         />
         <input
           className="signup-input"
           type="email"
+		  name='email'
           placeholder="Email"
-          value={userFormData.email}
+        //   value={userFormData.email}
           onChange={handleChange}
         />
         <input
           className="signup-input"
           type="password"
+		  name='password'
           placeholder="Password"
-          value={userFormData.password}
+        //   value={userFormData.password}
           onChange={handleChange}
         />
         <button className="signup-submit-btn" type="submit" validated={validated ? true : undefined} onClick={handleFormSubmit}>
