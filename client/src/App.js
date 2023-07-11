@@ -55,8 +55,6 @@ const App = () => {
     console.log('User signed in:', { username });
     console.log('Token:', token);
   };
-  
-  
 
   const handleSignOut = () => {
     localStorage.removeItem('id_token');
@@ -88,7 +86,9 @@ const App = () => {
                       <Route exact path="/" component={Home} />
                       <Route path="/about" component={About} />
                       <Route path="/videos" component={Videos} />
-                      <Route path="/sign-up" component={SignUp} />
+                      <Route path="/sign-up">
+                        <SignUp handleSignIn={handleSignIn} />
+                      </Route>
                       <Route path="/about-us" component={AboutUs} />
                       <Route path="/sign-in">
                         <SignIn handleSignIn={handleSignIn} />
