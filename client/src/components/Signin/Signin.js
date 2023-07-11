@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../../utils/mutations';
-import './Signinstyles.css';
+import './SigninStyles.css';
+import backgroundImg from '../Signin/signin.jpg';
+
 
 const SignIn = ({ handleSignIn }) => {
   const [email, setEmail] = useState('');
@@ -35,7 +37,12 @@ const SignIn = ({ handleSignIn }) => {
   };
 
   return (
-    <div className="signin-container">
+    <div className="signin-container" 
+    style={{ backgroundImage: `url(${backgroundImg})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    }}>
       <form className="signin-form" onSubmit={handleFormSubmit}>
         <h1 className="signin-title">Sign In</h1>
         <input
