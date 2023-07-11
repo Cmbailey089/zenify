@@ -1,22 +1,49 @@
-// import React from 'react'
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '../../utils/mutations';
+import './Signinstyles.css';
 
-const Signin = () => {
-  const [username, setUsername] = useState('');
+const SignIn = ({ handleSignIn }) => {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // ...form submission and validation logic can be added here
+  const [login, { error }] = useMutation(LOGIN);
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const { data } = await login({
+        variables: {
+          email,
+          password,
+        },
+      });
+
+      // Sign in successful
+      const { token, user } = data.login;
+      handleSignIn(token, user.username);
+
+      // Reset form fields after successful sign-in
+      setEmail('');
+      setPassword('');
+    } catch (err) {
+      // Sign in failed
+      // Handle error or display error message
+      console.error('Sign-in error:', err);
+    }
+  };
 
   return (
     <div className="signin-container">
-      <form className="signin-form">
+      <form className="signin-form" onSubmit={handleFormSubmit}>
         <h1 className="signin-title">Sign In</h1>
         <input
           className="signin-input"
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           className="signin-input"
@@ -29,8 +56,9 @@ const Signin = () => {
           Sign In
         </button>
       </form>
+      {error && <p>Error occurred during sign-in. Please try again.</p>}
     </div>
   );
 };
 
-export default Signin;
+export default SignIn;
