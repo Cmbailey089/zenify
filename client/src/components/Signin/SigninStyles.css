@@ -1,14 +1,13 @@
-.signup-container {
+.signin-container {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   height: 100vh;
   position: relative;
-  
 }
 
-.signup-form {
+.signin-form {
   width: 300px;
   padding: 20px;
   border-radius: 10px;
@@ -16,13 +15,13 @@
   background-color: #fff;
 }
 
-.signup-title {
+.signin-title {
   text-align: center;
   font-size: 24px;
   margin-bottom: 20px;
 }
 
-.signup-input {
+.signin-input {
   width: 90%;
   padding: 10px;
   margin-bottom: 10px;
@@ -30,7 +29,7 @@
   border-radius: 4px;
 }
 
-.signup-submit-btn {
+.signin-submit-btn {
   width: 100%;
   padding: 10px;
   border: none;
@@ -41,7 +40,7 @@
   cursor: pointer;
 }
 
-.signup-submit-btn:hover {
+.signin-submit-btn:hover {
   background-color: #0056b3;
 }
 

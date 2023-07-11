@@ -62,10 +62,12 @@ query SearchResults($title: String!, $type: String!, $tags: [String]) {
       tags
       title
       url
+      _id
     }
     tags
     title
     type
+    _id
   }
 }
-`
+`;

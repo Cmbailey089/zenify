@@ -38,6 +38,7 @@ export const Bars = styled(FaBars)`
     font-size: 1.8rem;
     cursor: pointer;
   }
+  
 `;
 
 export const NavMenu = styled.div`
