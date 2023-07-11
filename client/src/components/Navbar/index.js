@@ -10,20 +10,20 @@ const Navbar = () => {
         <Bars />
         <NavMenu>
           <NavLink to="/" activeStyle>
-          <button className="nav-link-button">Home</button>
+            <button className="nav-link-button">Home</button>
           </NavLink>
           <NavLink to="/about" activeStyle>
-          <button className="nav-link-button">About</button>
+            <button className="nav-link-button">About</button>
           </NavLink>
-          <NavLink to="/videos" activeStyle={{ fontWeight: 'bold', color: 'red' }}>
-            Videos
+          <NavLink to="/videos" activeStyle>
+            <button className="nav-link-button">Videos</button>
           </NavLink>
-          <NavLink to="/sign-up" activeStyle={{ fontWeight: 'bold', color: 'red' }}>
-            Sign Up
+          <NavLink to="/sign-up" activeStyle>
+            <button className="nav-link-button">Sign up</button>
           </NavLink>
         </NavMenu>
         <NavBtn>
-        <button className="sign-in-button">Sign In</button>
+          <button className="sign-in-button">Sign In</button>
         </NavBtn>
       </Nav>
     </>
@@ -31,5 +31,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 
 
