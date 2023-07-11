@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Signupstyles.css';
+
 import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
@@ -45,6 +46,8 @@ const SignUp = () => {
 	  });
 	};
 
+  // ...form submission and validation logic can be added here
+
   return (
     <div className="signup-container">
       <form className="signup-form">
@@ -52,10 +55,14 @@ const SignUp = () => {
         <input
           className="signup-input"
           type="text"
+
 		  name="username"
           placeholder="Username"
         //   value={userFormData.username}
           onChange={handleChange}
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
         <input
           className="signup-input"
@@ -64,6 +71,9 @@ const SignUp = () => {
           placeholder="Email"
         //   value={userFormData.email}
           onChange={handleChange}
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           className="signup-input"
@@ -84,6 +94,14 @@ const SignUp = () => {
                 {error.message}
               </div>
             )}
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button className="signup-submit-btn" type="submit">
+          Sign Up
+        </button>
+      </form>
     </div>
   );
 };
