@@ -1,5 +1,6 @@
 body {
     background-image: linear-gradient(to top,  turquoise, purple);
+}
   
 .page-transition-enter {
   opacity: 0;
