@@ -10,6 +10,7 @@ import SignUp from "./components/Signup/Signup";
 import Videos from "./components/Videos/Videos";
 import Footer from "./components/Footer/Footer";
 import SignIn from "./components/Signin/Signin";
+import AboutUs from "./components/AboutUs/AboutUs";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const httpLink = createHttpLink({
@@ -88,6 +89,7 @@ const App = () => {
                       <Route path="/about" component={About} />
                       <Route path="/videos" component={Videos} />
                       <Route path="/sign-up" component={SignUp} />
+                      <Route path="/about-us" component={AboutUs} />
                       <Route path="/sign-in">
                         <SignIn handleSignIn={handleSignIn} />
                       </Route>
