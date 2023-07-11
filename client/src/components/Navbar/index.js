@@ -18,12 +18,16 @@ const Navbar = ({ loggedIn, username, handleSignOut }) => {
           <NavLink to="/" activeStyle>
             <button className="nav-link-button">Home</button>
           </NavLink>
-          <NavLink to="/about" activeStyle>
-            <button className="nav-link-button">About</button>
-          </NavLink>
-          <NavLink to="/videos" activeStyle>
-            <button className="nav-link-button">Videos</button>
-          </NavLink>
+          {loggedIn && (
+            <>
+              <NavLink to="/about" activeStyle>
+                <button className="nav-link-button">About</button>
+              </NavLink>
+              <NavLink to="/videos" activeStyle>
+                <button className="nav-link-button">Videos</button>
+              </NavLink>
+            </>
+          )}
           {loggedIn ? (
             <>
               <LoggedInIndicator username={username} />

@@ -73,31 +73,28 @@ const App = () => {
         <div>
           <Navbar loggedIn={loggedIn} username={username} handleSignOut={handleSignOut} />
           <Route
-            render={({ location }) => {
-              const locationKey = location.pathname;
-              return (
-                <TransitionGroup>
-                  <CSSTransition
-                    key={locationKey}
-                    timeout={500}
-                    classNames="page-transition"
-                  >
-                    <Switch location={location}>
-                      <Route exact path="/" component={Home} />
-                      <Route path="/about" component={About} />
-                      <Route path="/videos" component={Videos} />
-                      <Route path="/sign-up">
-                        <SignUp handleSignIn={handleSignIn} />
-                      </Route>
-                      <Route path="/about-us" component={AboutUs} />
-                      <Route path="/sign-in">
-                        <SignIn handleSignIn={handleSignIn} />
-                      </Route>
-                    </Switch>
-                  </CSSTransition>
-                </TransitionGroup>
-              );
-            }}
+            render={({ location }) => (
+              <TransitionGroup>
+                <CSSTransition
+                  key={location.key}
+                  timeout={500}
+                  classNames="page-transition"
+                >
+                  <Switch location={location}>
+                    <Route exact path="/" component={Home} />
+                    <Route path="/about" component={About} />
+                    <Route path="/videos" component={Videos} />
+                    <Route path="/sign-up">
+                      <SignUp handleSignIn={handleSignIn} />
+                    </Route>
+                    <Route path="/about-us" component={AboutUs} />
+                    <Route path="/sign-in">
+                      <SignIn handleSignIn={handleSignIn} />
+                    </Route>
+                  </Switch>
+                </CSSTransition>
+              </TransitionGroup>
+            )}
           />
           <Footer />
         </div>
