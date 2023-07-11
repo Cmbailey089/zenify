@@ -87,9 +87,6 @@ const SignUp = () => {
                 {error.message}
               </div>
             )}
-        <button className="signup-submit-btn" type="submit">
-          Sign Up
-        </button>
     </div>
   );
 };
