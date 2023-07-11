@@ -9,6 +9,7 @@ import About from "./pages/About";
 import SignUp from "./components/Signup/Signup";
 import Videos from "./components/Videos/Videos";
 import Footer from "./components/Footer/Footer";
+import Signin from "./components/Signin/Signin";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Switch } from 'react-router-dom';
 
@@ -56,6 +57,7 @@ function App() {
                     <Route path="/about" component={About} />
                     <Route path="/videos" component={Videos} />
                     <Route path="/sign-up" component={SignUp} />
+                    <Route path="/signin" component={Signin} />
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>
