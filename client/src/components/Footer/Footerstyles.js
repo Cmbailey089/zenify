@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 export const Box = styled.div`
   padding: 0px 0px;
@@ -46,8 +47,24 @@ export const FooterLink = styled.a`
   text-decoration: none;
 
   &:hover {
+    cursor: pointer;
     color: green;
     transition: 200ms ease-in;
+  }
+`;
+
+export const AimButton = styled(Link)`
+  
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 18px;
+    text-decoration: none;
+
+    &:hover {
+      cursor: pointer;
+      color: green;
+      transition: 200ms ease-in;
+    }
   }
 `;
 
