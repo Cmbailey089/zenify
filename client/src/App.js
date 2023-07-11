@@ -58,6 +58,7 @@ function App() {
                     <Route path="/videos" component={Videos} />
                     <Route path="/sign-up" component={SignUp} />
                     <Route path="/signin" component={Signin} />
+                    
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>
