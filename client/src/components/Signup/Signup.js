@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import './Signupstyles.css';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
 import backgroundImg from '../Signup/meditation.jpg';
 
-const SignUp = () => {
+const SignUp = ({ handleSignIn }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const history = useHistory();
   const [addUser, { error }] = useMutation(ADD_USER);
 
   const handleSignUp = async (e) => {
@@ -23,27 +25,37 @@ const SignUp = () => {
         },
       });
 
-      // Handle successful sign-up, e.g., redirect or show success message
+      // Handle successful sign-up
       console.log('User created:', data);
 
       // Reset form fields after successful submission
       setUsername('');
       setEmail('');
       setPassword('');
+
+      // Perform automatic login
+      if (handleSignIn) {
+        const { token, user } = data.addUser;
+        handleSignIn(token, user.username);
+      }
+
+      // Redirect to home page
+      history.push('/');
     } catch (err) {
-      // Handle error during sign-up, e.g., display error message
+      // Handle error during sign-up
       console.error('Sign-up error:', err);
     }
   };
 
   return (
     <div 
-    className="signup-container"
-    style={{ backgroundImage: `url(${backgroundImg})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-  }}
+      className="signup-container"
+      style={{ 
+        backgroundImage: `url(${backgroundImg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
     >
       <form className="signup-form" onSubmit={handleSignUp}>
         <h1 className="signup-title">Sign Up</h1>
@@ -78,4 +90,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
