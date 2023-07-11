@@ -1,11 +1,9 @@
 import React from 'react';
 import './Home.css';
+import { Link } from 'react-router-dom';
 import backgroundImg from '../Images/desktop-wallpaper-stress-relief-background-44305.jpg';
 
-const Home = () => {
-  const token = localStorage.getItem('id_token');
-  const loggedIn = !!token;
-
+const Home = ({ loggedIn }) => {
   return (
     <div className="home-container">
       <div className="background">
@@ -16,7 +14,9 @@ const Home = () => {
         <p>
           Discover various techniques and resources to manage stress and find relaxation in your daily life. Our application offers a range of stress relief practices, including meditation, breathing exercises, mindfulness, and more.
         </p>
-        {!loggedIn && <button className="get-started-btn">Get Started</button>}
+        <Link to="/sign-in" className="get-started-btn">
+          {loggedIn ? 'Go to Dashboard' : 'Get Started'}
+        </Link>
         {loggedIn && (
           <div className="features">
             <div className="feature-item">
