@@ -8,7 +8,6 @@ export const Box = styled.div`
   bottom: 0;
   width: 100%;
 
-
   @media (max-width: 1000px) {
     padding: 70px 30px;
   }
@@ -20,14 +19,18 @@ export const Container = styled.div`
   justify-content: center;
   max-width: 1000px;
   margin: 0 auto;
-  /* background: red; */
 `;
 
 export const Column = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   text-align: center;
-  margin-left: 60px;
+  margin: 0 20px;
+
+  @media (max-width: 768px) {
+    margin: 0;
+  }
 `;
 
 export const Row = styled.div`
@@ -35,15 +38,16 @@ export const Row = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
   grid-gap: 20px;
 
-  @media (max-width: 1000px) {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    justify-items: center;
   }
 `;
 
 export const FooterLink = styled.a`
   color: #fff;
   margin-bottom: 20px;
-  font-size: 18px;
+  font-size: 16px;
   text-decoration: none;
 
   &:hover {
@@ -54,17 +58,15 @@ export const FooterLink = styled.a`
 `;
 
 export const AimButton = styled(Link)`
-  
-    color: #fff;
-    margin-bottom: 20px;
-    font-size: 18px;
-    text-decoration: none;
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 16px;
+  text-decoration: none;
 
-    &:hover {
-      cursor: pointer;
-      color: green;
-      transition: 200ms ease-in;
-    }
+  &:hover {
+    cursor: pointer;
+    color: green;
+    transition: 200ms ease-in;
   }
 `;
 
@@ -73,11 +75,19 @@ export const Heading = styled.p`
   color: #fff;
   margin-bottom: 40px;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
-export const Logo =  styled.section `
+export const Logo = styled.section`
   display: flex;
   justify-content: space-between;
   height: 143px;
   width: auto;
-`
+
+  @media (max-width: 768px) {
+    height: 100px;
+  }
+`;
