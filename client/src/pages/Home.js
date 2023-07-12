@@ -21,7 +21,7 @@ const Home = ({ loggedIn }) => {
           <div className="features">
             <Link to="/tips" className="feature-item">
               <h3>Stress Management Tips</h3>
-              <p>Explore helpful tips and strategies to effectively manage stress in your life.</p>
+              {/* <p>Explore helpful tips and strategies to effectively manage stress in your life.</p> */}
             </Link>
             <Link to="/meditation" className="feature-item">
               <h3>Guided Meditation</h3>
