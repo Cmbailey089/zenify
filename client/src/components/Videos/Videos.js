@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/client';
 
 
 const Videos = () => {
-
+  
   const {loading, data} = useQuery(GATHER_VIDEOS)
 
   const videos = data?.getVideos

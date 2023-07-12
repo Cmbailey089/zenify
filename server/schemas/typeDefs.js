@@ -7,6 +7,7 @@ const typeDefs = gql`
         getResults: [Result]
         searchResults(title: String!, type: String!, tags: [String]):[Result]
         getVideos: [Result]
+        getProducts: [Product]
     }
 
     type Mutation {
@@ -15,6 +16,8 @@ const typeDefs = gql`
         addResult(title: String!, type: String!, payload: Video_Input!, tags: [String]): Result
         deleteResult(_id: ID!): Result
         deleteUser(_id: ID!): User
+        addToCart(items: Item_Bundle_I!): User
+        addProduct(name: String!, priceInCents: Int!): Product
     }
 
     type User {
@@ -22,6 +25,7 @@ const typeDefs = gql`
         username: String!
         email: String!
         password: String!
+        cart: [Item_Bundle_O]
     }
 
     input Video_Input {
@@ -29,6 +33,30 @@ const typeDefs = gql`
         title: String!
        url:String!
        tags:[String]
+    }
+
+    input Product_I{
+        _id: ID
+        name: String!
+        priceInCents: Int!
+    }
+
+    type Product{
+        _id: ID
+        name: String!
+        priceInCents: Int!
+    }
+
+    input Item_Bundle_I{
+        _id: ID
+        product: Product_I!
+        count: Int!
+    }
+
+    type Item_Bundle_O{
+        _id: ID
+        product: Product!
+        count: Int!
     }
 
     type Video_Output {

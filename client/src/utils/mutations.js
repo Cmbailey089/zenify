@@ -67,3 +67,18 @@ mutation DeleteUser($id: ID!) {
   }
 }
 `
+export const ADD_TO_CART = gql`
+mutation AddToCart($items: Item_Bundle_I!) {
+  addToCart(items: $items) {
+    cart {
+      count
+      product {
+        name
+        priceInCents
+      }
+    }
+    email
+    username
+  }
+}
+`

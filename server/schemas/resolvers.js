@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Result } = require('../models/index');
+const { User, Result, Product } = require('../models/index');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -29,9 +29,13 @@ const resolvers = {
       return results;
     },
     getVideos: async (parent) => {
-      const videos = Result.find({ type: 'video' });
+      const videos = await Result.find({ type: 'video' });
       return videos;
     },
+    getProducts: async (parent) => {
+      const products = await Product.find()
+      return products
+    }
   },
   Mutation: {
     login: async (parent, { email, password }) => {
@@ -68,6 +72,15 @@ const resolvers = {
     deleteUser: async (parent, {_id}) => {
       const user = await User.findByIdAndDelete(_id)
       return user
+    },
+    addToCart: async (parent, args, context) => {
+      console.log(context)
+      const user = await User.findByIdAndUpdate(context.user._id, {$push:{cart:{...args}}})
+      return user
+    },
+    addProduct: async (parent, {name, priceInCents}) => {
+      const product = await Product.create({name, priceInCents})
+      return product
     }
   },
 };
