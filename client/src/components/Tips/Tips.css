@@ -1,0 +1,54 @@
+
+.tip-items {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .tips-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .tip-item {
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+  }
+  
+  .tip-box {
+    background-color: #efebebc7;
+    padding: 12px;
+    border-radius: 4px;
+  }
+  
+  .tips-info {
+    width: 100%;
+  }
+
+  
+  .tip-box h3 {
+    margin-top: 0;
+  }
+
+  .tips-heading {
+    color:rgb(7, 249, 249); 
+    font-size: 70px;
+  }
+  
+  .tip-box p {
+    margin-bottom: 0;
+    color:rgb(12, 12, 12); 
+    font-size: 25px;
+  }
+  
+  .tips-container {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .tips-info {
+    color: red;
+    font-size: 40px;
+  }
+  
