@@ -11,6 +11,9 @@ import Videos from "./components/Videos/Videos";
 import Footer from "./components/Footer/Footer";
 import SignIn from "./components/Signin/Signin";
 import AboutUs from "./components/AboutUs/AboutUs";
+import Meditation from "./components/Meditation/Meditation";
+import Breathing from "./components/Breathing/Breathing";
+import Tips from "./components/Tips/Tips";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const httpLink = createHttpLink({
@@ -84,6 +87,9 @@ const App = () => {
                     <Route exact path="/" render={() => <Home loggedIn={loggedIn} />} />
                     <Route path="/about" component={About} />
                     <Route path="/videos" component={Videos} />
+                    <Route path="/breathing" component={Breathing} />
+                    <Route path="/meditation" component={Meditation} />
+                    <Route path="/tips" component={Tips} />
                     <Route path="/sign-up">
                       <SignUp handleSignIn={handleSignIn} />
                     </Route>
