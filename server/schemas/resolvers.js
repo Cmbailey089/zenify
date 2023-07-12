@@ -61,6 +61,14 @@ const resolvers = {
       const result = await Result.create({ title, type, payload, tags });
       return result;
     },
+    deleteResult: async (parent, {_id}) => {
+      const result = await Result.findByIdAndDelete(_id)
+      return result
+    },
+    deleteUser: async (parent, {_id}) => {
+      const user = await User.findByIdAndDelete(_id)
+      return user
+    }
   },
 };
 

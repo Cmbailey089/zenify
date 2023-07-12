@@ -40,3 +40,30 @@ mutation AddResult($title: String!, $type: String!, $payload: Video_Input!) {
   }
 }
 `;
+
+export const DELETE_RESULT = gql`
+mutation DeleteResult($id: ID!) {
+  deleteResult(_id: $id) {
+    _id
+    payload {
+      _id
+      tags
+      title
+      url
+    }
+    tags
+    title
+    type
+  }
+}
+`
+
+export const DELETE_USER = gql`
+mutation DeleteUser($id: ID!) {
+  deleteUser(_id: $id) {
+    _id
+    email
+    username
+  }
+}
+`
