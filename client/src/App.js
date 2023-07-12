@@ -11,6 +11,7 @@ import Videos from "./components/Videos/Videos";
 import Footer from "./components/Footer/Footer";
 import SignIn from "./components/Signin/Signin";
 import AboutUs from "./components/AboutUs/AboutUs";
+import UpdatePfp from "./components/UpdatePfp/UpdatePfp";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const httpLink = createHttpLink({
@@ -81,7 +82,7 @@ const App = () => {
                   classNames="page-transition"
                 >
                   <Switch location={location}>
-                    <Route exact path="/" render={() => <Home loggedIn={loggedIn} />} />
+                    <Route exact path="/" component={Home} />
                     <Route path="/about" component={About} />
                     <Route path="/videos" component={Videos} />
                     <Route path="/sign-up">
@@ -91,6 +92,7 @@ const App = () => {
                     <Route path="/sign-in">
                       <SignIn handleSignIn={handleSignIn} />
                     </Route>
+                    <Route path="/update-pfp" component={UpdatePfp} /> {/* New route for UpdatePfp */}
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>
@@ -104,3 +106,7 @@ const App = () => {
 };
 
 export default App;
+
+
+
+

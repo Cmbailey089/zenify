@@ -4,17 +4,22 @@ import VideoLogo from './VideoLogo';
 import { Link } from 'react-router-dom';
 import LoggedInIndicator from './LoggedInIndicator';
 import SignOut from './SignOut';
+import { useQuery } from '@apollo/client';
+import { QUERY_ME } from '../../utils/queries';
 
 const Navbar = ({ loggedIn, username, handleSignOut }) => {
-  console.log('loggedIn:', loggedIn);
-  console.log('username:', username);
+  const [dropdownOpen, setDropdownOpen] = React.useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
 
   return (
     <>
       <Nav>
         <VideoLogo />
-        <Bars />
-        <NavMenu>
+        <Bars onClick={toggleDropdown} />
+        <NavMenu className={dropdownOpen ? 'active' : ''}>
           <NavLink to="/" activeStyle>
             <button className="nav-link-button">Home</button>
           </NavLink>
@@ -26,14 +31,13 @@ const Navbar = ({ loggedIn, username, handleSignOut }) => {
               <NavLink to="/videos" activeStyle>
                 <button className="nav-link-button">Videos</button>
               </NavLink>
+              <LoggedInIndicator username={username} />
+              <button className="nav-link-button" onClick={handleSignOut}>
+                Sign Out
+              </button>
             </>
           )}
-          {loggedIn ? (
-            <>
-              <LoggedInIndicator username={username} />
-              <button className="nav-link-button" onClick={handleSignOut}>Sign Out</button>
-            </>
-          ) : (
+          {!loggedIn && (
             <>
               <NavLink to="/sign-up" activeStyle>
                 <button className="nav-link-button">Sign up</button>
@@ -50,3 +54,5 @@ const Navbar = ({ loggedIn, username, handleSignOut }) => {
 };
 
 export default Navbar;
+
+

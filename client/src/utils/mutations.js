@@ -1,42 +1,35 @@
-import { gql } from '@apollo/client'
+import { gql } from '@apollo/client';
 
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
-      user {
-        _id
-        username
-      }
-    }
+    // Mutation code...
   }
 `;
 
 export const ADD_USER = gql`
-mutation addUser($username: String!, $email: String!, $password: String!){
-    addUser(username: $username, email: $email, password: $password){
-      token
-      user {
-        _id
-        email
-        username
-      }
-    }
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    // Mutation code...
   }
-  `;
-    
-
-    export const ADD_RESULT = gql`
-mutation AddResult($title: String!, $type: String!, $payload: Video_Input!) {
-  addResult(title: $title, type: $type, payload: $payload) {
-    payload {
-      tags
-      title
-      url
-    }
-    tags
-    title
-    type
-  }
-}
 `;
+
+export const ADD_RESULT = gql`
+  mutation AddResult($title: String!, $type: String!, $payload: Video_Input!) {
+    // Mutation code...
+  }
+`;
+
+export const UPDATE_PROFILE_PICTURE = gql`
+  mutation UpdateProfilePicture($imageUrl: String!) {
+    // Mutation code...
+  }
+`;
+
+export const DELETE_PROFILE_PICTURE = gql`
+  mutation DeleteProfilePicture {
+    // Mutation code...
+  }
+`;
+
+
+
+
