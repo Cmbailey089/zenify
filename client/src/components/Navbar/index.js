@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink } from './NavbarElements';
 import VideoLogo from './VideoLogo';
 import { Link } from 'react-router-dom';
 import LoggedInIndicator from './LoggedInIndicator';
 import SignOut from './SignOut';
+import DropdownMenu from '../DropdownMenu/DropdownMenu';
 
 const Navbar = ({ loggedIn, username, handleSignOut }) => {
-  console.log('loggedIn:', loggedIn);
-  console.log('username:', username);
+  const [toggle, setToggle] = useState(false);
+  // console.log('loggedIn:', loggedIn);
+  // console.log('username:', username);
+
+  const handleToggle = ()=> {
+    setToggle(!toggle);
+    console.log('click')
+  }
 
   return (
     <>
       <Nav>
         <VideoLogo />
-        <Bars />
+        <Bars onClick={handleToggle}/>
+        <DropdownMenu visible={toggle}/>
         <NavMenu>
           <NavLink to="/" activeStyle>
             <button className="nav-link-button">Home</button>
