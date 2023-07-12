@@ -1,6 +1,7 @@
 import React from 'react'
 import './meditation.css';
 import backgroundImg from '../Meditation/meditation.jpg';
+
 const Meditation = () => {
   return (
     <div className="tips-container" style={{ backgroundImage: `url(${backgroundImg})` }}>
