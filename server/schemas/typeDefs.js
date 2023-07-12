@@ -54,6 +54,11 @@ const typeDefs = gql`
         _id: ID
         name: String!
     }
+
+    input Tip {
+        tip: String!
+        stress: String!
+    }
 `
 module.exports = typeDefs
 
