@@ -13,6 +13,8 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         addResult(title: String!, type: String!, payload: Video_Input!, tags: [String]): Result
+        deleteResult(_id: ID!): Result
+        deleteUser(_id: ID!): User
     }
 
     type User {
