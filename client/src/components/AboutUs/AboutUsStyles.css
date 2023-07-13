@@ -19,13 +19,14 @@
     padding: 110px;
     font-family: Arial, sans-serif;
     color: #09efe0;
+    font-size: 30px;
     background-color: #d1d4db62;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
   }
   
   .card h3 {
-    font-size: 25px;
+    font-size: 55px;
     margin-bottom: 80px;
   }
   
