@@ -7,7 +7,7 @@ const db = require('./config/connection');
 const apiRoutes = require('./routes/index')
 /*adding imports for stripe*/
 require('dotenv').config()
-const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
+//const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
 const {authMiddleware} = require('./utils/auth')
 const app = express();
