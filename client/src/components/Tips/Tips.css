@@ -52,3 +52,38 @@
     font-size: 40px;
   }
   
+  
+
+  
+@media (max-width: 768px) {
+  .tips-heading {
+    font-size: 40px;
+  }
+
+  .tip-item {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .tips-heading {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tips-container {
+    
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .tips-container {
+   
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background-position: ; */
+  }
+}

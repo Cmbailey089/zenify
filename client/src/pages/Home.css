@@ -27,18 +27,21 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: #fff;
+    color: #f4f0f0;
+    
   }
   
   h1 {
-    font-size: 45px;
+    font-size: 60px;
     font-weight: bold;
     margin-bottom: 20px;
   }
   
   p {
-    font-size: 25px;
+    font-size: 30px;
     margin-bottom: 30px;
+    /* color:rgb(243, 244, 241); */
+    font-weight: bold;
   }
   
   .get-started-btn {
@@ -82,13 +85,30 @@
 }
 
 .feature-item h3 {
-      color:rgb(54, 61, 23);
-    font-size: 24px;
+      color:rgb(55, 36, 22);
+    font-size: 35px;
     margin-bottom: 10px;
   }
   
   .feature-item p {
     font-size: 16px;
+  }
+
+  .feature-item {
+    text-decoration: none;
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 18;
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 1s ease-in-out;
   }
 
   
