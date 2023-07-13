@@ -20,7 +20,24 @@ export const QUERY_USERS = gql`
       profilePictureUrl
     }
   }
-`;
+`
+
+export const QUERY_ME = gql`
+query me{
+  me{
+    _id
+    username
+    email
+    cart {
+      count
+      product {
+        name
+        priceInCents
+      }
+    }
+  }
+}
+`
 
 export const GATHER_VIDEOS = gql`
   query getVideos {

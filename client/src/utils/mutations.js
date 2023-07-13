@@ -49,14 +49,22 @@ export const UPDATE_PROFILE_PICTURE = gql`
       profilePictureUrl
     }
   }
-`;
-
-export const DELETE_PROFILE_PICTURE = gql`
-  mutation DeleteProfilePicture {
-    deleteProfilePicture {
-      _id
-      username
-      profilePictureUrl
+}
+`
+export const ADD_TO_CART = gql`
+mutation AddToCart($product: Product_I!, $count: Int!) {
+  addToCart(product: $product, count: $count) {
+    _id
+    email
+    username
+    cart {
+      count
+      product {
+        name
+        priceInCents
+      }
     }
   }
-`;
+}
+`
+

@@ -1,0 +1,31 @@
+.flex-box{
+    display: flex
+}
+.flex-align-center{
+    align-items: center;
+}
+.flex-justify-center{
+    justify-content: center;
+}
+.no-wrap{
+    flex-wrap: nowrap;
+}
+.wrap{
+    flex-wrap: wrap;
+}
+.flex-cols{
+    flex-direction: column;
+}
+.center-text{
+    text-align: center;
+}
+.flex-item{
+    flex-basis: 33%;
+}
+.shop-box{
+    background-color: white;
+    box-shadow: 10px 10px 10px 10px white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}

@@ -1,7 +1,9 @@
 // resolvers.js
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Result } = require('../models/index');
+const { User, Result, Product } = require('../models/index');
 const { signToken } = require('../utils/auth');
+require("dotenv").config()
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
 const resolvers = {
   Query: {
@@ -29,9 +31,17 @@ const resolvers = {
       return results;
     },
     getVideos: async (parent) => {
-      const videos = Result.find({ type: 'video' });
+      const videos = await Result.find({ type: 'video' });
       return videos;
     },
+    getProducts: async (parent) => {
+      try{
+        const products = await Product.find()
+        return products
+      }catch(err){
+        console.log(err)
+      }
+    }
   },
   Mutation: {
     login: async (parent, { email, password }) => {
@@ -61,6 +71,67 @@ const resolvers = {
       const result = await Result.create({ title, type, payload, tags });
       return result;
     },
+    deleteResult: async (parent, {_id}) => {
+      const result = await Result.findByIdAndDelete(_id)
+      return result
+    },
+    deleteUser: async (parent, {_id}) => {
+      const user = await User.findByIdAndDelete(_id)
+      return user
+    },
+    addToCart: async (parent, args, context) => {
+      console.log(args)
+      console.log("User id: "+context.user._id)
+      try{
+        console.log(context)
+        const user = await User.findByIdAndUpdate(context.user._id, {$push:{cart:{...args}}})
+        return user
+      }catch(err){
+        console.log(err)
+      }
+    },
+    addProduct: async (parent, {name, priceInCents}) => {
+      const product = await Product.create({name, priceInCents})
+      return product
+    },
+    getCheckout: async (parent, {cart}) => {
+      try{
+        /*
+        req.body structure:
+
+        {
+            cart{
+                product{
+                    name: String,
+                    priceInCents: Int
+                }
+                count: Int 
+            }
+        }
+        */
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types:['card'],
+            mode: 'payment',
+            line_items: cart.map(item=>{
+                return{
+                    price_data:{
+                        currency:"usd",
+                        product_data:{
+                            name: item.product.name
+                        },
+                        unit_amount: item.product.priceInCents
+                    },
+                    quantity: item.count
+                }
+            }),
+            success_url: `${process.env.SERVER_URL}`,
+            cancel_url: `${process.env.SERVER_URL}`
+        })//.then(res=>res.status(201).json(session))
+        return (session.url)
+    }catch(err){
+        console.log(err)
+    }
+    }
   },
 };
 

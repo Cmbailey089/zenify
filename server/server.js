@@ -7,19 +7,28 @@ const db = require('./config/connection');
 const apiRoutes = require('./routes/index')
 /*adding imports for stripe*/
 require('dotenv').config()
-//const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
+// const bodyParser = require('body-parser')
+const cors = require('cors')
 
 const {authMiddleware} = require('./utils/auth')
 const app = express();
+
+// app.use(bodyParser.json())
+// app.use(bodyParser.urlencoded({extended: true}))
+app.use(cors({
+  origin: "http://localhost:3000"
+}))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  //context: authMiddleware
+  context: authMiddleware
 })
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
 
 // if we're in production, serve client/build as static assets
