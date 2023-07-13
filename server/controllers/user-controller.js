@@ -43,3 +43,35 @@ module.exports = {
     res.json({ token, user });
   }
 };
+
+async updateUser({ params, body }, res) {
+  try {
+    const updatedUser = await User.findByIdAndUpdate(params.id, body, {
+      new: true,
+      runValidators: true,
+    });
+
+    if (!updatedUser) {
+      return res.status(400).json({ message: 'Cannot find a user with this id!' });
+    }
+
+    res.json({ message: 'User updated successfully!', user: updatedUser });
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to update the user.' });
+  }
+},
+
+async deleteUser({ params }, res) {
+  try {
+    const deletedUser = await User.findByIdAndDelete(params.id);
+
+    if (!deletedUser) {
+      return res.status(400).json({ message: 'Cannot find a user with this id!' });
+    }
+
+    res.json({ message: 'User deleted successfully!' });
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to delete the user.' });
+  }
+},
+

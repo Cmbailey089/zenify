@@ -5,13 +5,12 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
-      console.log(context);
       if (context.user) {
         return await User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError('You are not logged in.');
     },
-    getResults: async (parent) => {
+    getResults: async () => {
       const results = await Result.find();
       return results;
     },
@@ -28,8 +27,8 @@ const resolvers = {
       const results = await Result.find(criteria);
       return results;
     },
-    getVideos: async (parent) => {
-      const videos = Result.find({ type: 'video' });
+    getVideos: async () => {
+      const videos = await Result.find({ type: 'video' });
       return videos;
     },
   },
@@ -61,26 +60,26 @@ const resolvers = {
       const result = await Result.create({ title, type, payload, tags });
       return result;
     },
-    deleteResult: async (parent, {_id}) => {
-      const result = await Result.findByIdAndDelete(_id)
-      return result
+    deleteResult: async (parent, { _id }) => {
+      const result = await Result.findByIdAndDelete(_id);
+      return result;
     },
-    deleteUser: async (parent, {_id}) => {
-      const user = await User.findByIdAndDelete(_id)
-      return user
+    deleteUser: async (parent, { _id }) => {
+      const user = await User.findByIdAndDelete(_id);
+      return user;
     },
     addNote: async (parent, { UserId, noteText }) => {
       return User.findOneAndUpdate(
         { _id: UserId },
         {
-          $addToSet: { note: { noteText } },
+          $addToSet: { notes: { noteText } },
         },
         {
           new: true,
           runValidators: true,
         }
       );
-    }
+    },
   },
 };
 
