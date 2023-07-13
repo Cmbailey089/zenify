@@ -1,0 +1,29 @@
+/* .dropdown-menu {
+    display: none;
+    background-color: #63d471;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+  }
+  
+  .dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .dropdown-menu li {
+    padding: 10px;
+  }
+  
+  .dropdown-menu li a {
+    color: #808080;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .dropdown-menu li a:hover {
+    color: #000000;
+  }
+   */

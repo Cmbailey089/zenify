@@ -9,13 +9,11 @@ const typeDefs = gql`
     getVideos: [Result]
   }
 
-  type Mutation {
-    login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
-    addResult(title: String!, type: String!, payload: Video_Input!, tags: [String]): Result
-    updateProfilePicture(imageUrl: String!): User
-    deleteProfilePicture: User
-  }
+    type Mutation {
+        login(email: String!, password: String!): Auth
+        addUser(username: String!, email: String!, password: String!): Auth
+        addResult(title: String!, type: String!, payload: Video_Input!, tags: [String]): Result
+    }
 
   type User {
     _id: ID!

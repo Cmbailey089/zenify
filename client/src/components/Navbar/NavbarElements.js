@@ -1,6 +1,6 @@
 import { FaBars } from "react-icons/fa";
 import { NavLink as Link } from "react-router-dom";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Nav = styled.nav`
   background: #63d471;
@@ -9,6 +9,8 @@ export const Nav = styled.nav`
   justify-content: space-between;
   padding: 0.2rem calc((100vw - 1000px) / 2);
   z-index: 12;
+  /* Third Nav */
+  /* justify-content: flex-start; */
 `;
 
 export const NavLink = styled(Link)`
@@ -19,27 +21,35 @@ export const NavLink = styled(Link)`
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
-
   &.active {
     color: #000000;
   }
 `;
 
 export const Bars = styled(FaBars)`
-  display: none;
-  color: #808080;
-  cursor: pointer;
-
-  @media screen and (max-width: 768px) {
-    display: block;
-  }
+  // display: none;
+  // color: #808080;
+  // @media screen and (max-width: 768px) {
+  //   display: block;
+  //   position: absolute;
+  //   top: 0;
+  //   right: 0;
+  //   transform: translate(-100%, 75%);
+  //   font-size: 1.8rem;
+  //   cursor: pointer;
+  // }
+  
 `;
 
 export const NavMenu = styled.div`
   display: flex;
   align-items: center;
-  position: relative;
-
+  margin-right: -24px;
+  /* Second Nav */
+  /* margin-right: 24px; */
+  /* Third Nav */
+  /* width: 100vw;
+white-space: nowrap; */
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -49,13 +59,13 @@ export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
   margin-right: 24px;
-  position: relative;
-
+  /* Third Nav */
+  /* justify-content: flex-end;
+width: 100vw; */
   @media screen and (max-width: 768px) {
     display: none;
   }
 `;
-
 
 export const NavBtnLink = styled(Link)`
   border-radius: 4px;
@@ -67,41 +77,11 @@ export const NavBtnLink = styled(Link)`
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
+  /* Second Nav */
   margin-left: 24px;
-
   &:hover {
     transition: all 0.2s ease-in-out;
     background: #fff;
     color: #808080;
   }
 `;
-
-export const DropdownMenu = styled.div`
-  background: #63d471;
-  position: absolute;
-  top: 85px;
-  right: 0;
-  width: 200px;
-  display: ${({ open }) => (open ? 'flex' : 'none')};
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem 0;
-
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-`;
-
-
-export const DropdownItem = styled(Link)`
-  color: #808080;
-  text-decoration: none;
-  font-size: 18px;
-  margin: 0.5rem 0;
-
-  &:hover {
-    color: #000000;
-  }
-`;
-

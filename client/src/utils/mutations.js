@@ -29,7 +29,3 @@ export const DELETE_PROFILE_PICTURE = gql`
     // Mutation code...
   }
 `;
-
-
-
-
