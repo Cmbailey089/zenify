@@ -17,6 +17,22 @@ const userSchema = new Schema({
     unique: true,
     match: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
   },
+  notes: [
+    {
+      noteText: {
+        type: String,
+        required: true,
+      },
+      stress: {
+        type: String,
+      },
+      createdAt: {
+        type: String,
+        default: Date.now
+      }
+    
+    }
+  ]
 },
  // set this to use virtual below
  {

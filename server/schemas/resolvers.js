@@ -68,6 +68,18 @@ const resolvers = {
     deleteUser: async (parent, {_id}) => {
       const user = await User.findByIdAndDelete(_id)
       return user
+    },
+    addNote: async (parent, { UserId, noteText }) => {
+      return User.findOneAndUpdate(
+        { _id: UserId },
+        {
+          $addToSet: { note: { noteText } },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
     }
   },
 };
