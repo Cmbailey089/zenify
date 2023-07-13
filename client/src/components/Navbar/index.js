@@ -64,23 +64,21 @@ import { NavLink } from "react-router-dom";
 import { ReactComponent as Hamburger } from "./assets/Hamburger.svg";
 import LoggedInIndicator from "./LoggedInIndicator";
 import VideoLogo from "./VideoLogo";
-
 import "./Navbar.css";
-
 const Navbar = ({ loggedIn, username, handleSignOut }) => {
   const [showNavbar, setShowNavbar] = useState(false);
-
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
   };
-
   return (
     <nav className="navbar">
       <div className="menu-icon" onClick={handleShowNavbar}>
         <Hamburger />
       </div>
       <div className="container">
-        <div className="logo"><VideoLogo /></div>
+        <div className="logo">
+          <VideoLogo />
+        </div>
         <div className={`nav-elements  ${showNavbar && "active"}`}>
           <ul>
             <li>
@@ -96,17 +94,32 @@ const Navbar = ({ loggedIn, username, handleSignOut }) => {
                 </li>
               </>
             )}
-            <li>
-              <NavLink to="/sign-in">Sign In</NavLink>
-            </li>
-            <li>
-              <NavLink to="/sign-up">Sign-up</NavLink>
-            </li>
+            {!loggedIn && (
+              <>
+                <li>
+                  <NavLink to="/sign-in">Sign In</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/sign-up">Sign Up</NavLink>
+                </li>
+              </>
+            )}
+            {loggedIn && (
+              <>
+                <li>
+                  <LoggedInIndicator username={username} />
+                </li>
+                <li>
+                  <button className="nav-link-button" onClick={handleSignOut}>
+                    Sign Out
+                  </button>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
     </nav>
   );
 };
-
 export default Navbar;
