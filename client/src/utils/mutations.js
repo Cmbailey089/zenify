@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
 
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
@@ -13,41 +13,57 @@ export const LOGIN = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
+mutation addUser($username: String!, $email: String!, $password: String!){
+    addUser(username: $username, email: $email, password: $password){
       token
       user {
         _id
         email
         username
-        profilePictureUrl
       }
     }
   }
-`;
+  `;
+    
 
-export const ADD_RESULT = gql`
-  mutation AddResult($title: String!, $type: String!, $payload: Video_Input!) {
-    addResult(title: $title, type: $type, payload: $payload) {
-      _id
-      title
-      payload {
-        url
-        tags
-      }
+    export const ADD_RESULT = gql`
+mutation AddResult($title: String!, $type: String!, $payload: Video_Input!) {
+  addResult(title: $title, type: $type, payload: $payload) {
+    payload {
       tags
-      type
+      title
+      url
     }
+    tags
+    title
+    type
   }
+}
 `;
 
-export const UPDATE_PROFILE_PICTURE = gql`
-  mutation UpdateProfilePicture($imageUrl: String!) {
-    updateProfilePicture(imageUrl: $imageUrl) {
+export const DELETE_RESULT = gql`
+mutation DeleteResult($id: ID!) {
+  deleteResult(_id: $id) {
+    _id
+    payload {
       _id
-      username
-      profilePictureUrl
+      tags
+      title
+      url
     }
+    tags
+    title
+    type
+  }
+}
+`
+
+export const DELETE_USER = gql`
+mutation DeleteUser($id: ID!) {
+  deleteUser(_id: $id) {
+    _id
+    email
+    username
   }
 }
 `
@@ -67,4 +83,3 @@ mutation AddToCart($product: Product_I!, $count: Int!) {
   }
 }
 `
-
