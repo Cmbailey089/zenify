@@ -1,6 +1,8 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Result, Product } = require('../models/index');
 const { signToken } = require('../utils/auth');
+require("dotenv").config()
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
 const resolvers = {
   Query: {
@@ -33,8 +35,12 @@ const resolvers = {
       return videos;
     },
     getProducts: async (parent) => {
-      const products = await Product.find()
-      return products
+      try{
+        const products = await Product.find()
+        return products
+      }catch(err){
+        console.log(err)
+      }
     }
   },
   Mutation: {
@@ -74,13 +80,57 @@ const resolvers = {
       return user
     },
     addToCart: async (parent, args, context) => {
-      console.log(context)
-      const user = await User.findByIdAndUpdate(context.user._id, {$push:{cart:{...args}}})
-      return user
+      console.log(args)
+      console.log("User id: "+context.user._id)
+      try{
+        console.log(context)
+        const user = await User.findByIdAndUpdate(context.user._id, {$push:{cart:{...args}}})
+        return user
+      }catch(err){
+        console.log(err)
+      }
     },
     addProduct: async (parent, {name, priceInCents}) => {
       const product = await Product.create({name, priceInCents})
       return product
+    },
+    getCheckout: async (parent, {cart}) => {
+      try{
+        /*
+        req.body structure:
+
+        {
+            cart{
+                product{
+                    name: String,
+                    priceInCents: Int
+                }
+                count: Int 
+            }
+        }
+        */
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types:['card'],
+            mode: 'payment',
+            line_items: cart.map(item=>{
+                return{
+                    price_data:{
+                        currency:"usd",
+                        product_data:{
+                            name: item.product.name
+                        },
+                        unit_amount: item.product.priceInCents
+                    },
+                    quantity: item.count
+                }
+            }),
+            success_url: `${process.env.SERVER_URL}`,
+            cancel_url: `${process.env.SERVER_URL}`
+        })//.then(res=>res.status(201).json(session))
+        return (session.url)
+    }catch(err){
+        console.log(err)
+    }
     }
   },
 };

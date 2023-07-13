@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const cartSchema = require('./cart.js')
 
 const userSchema = new Schema({
   username: {
@@ -17,6 +18,11 @@ const userSchema = new Schema({
     unique: true,
     match: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
   },
+  cart:[
+    {
+      type: cartSchema
+    }
+  ]
 },
  // set this to use virtual below
  {

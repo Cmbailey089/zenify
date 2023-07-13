@@ -2,30 +2,33 @@ require("dotenv").config()
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
 module.exports = {
-    async createCheckoutSession(req, res){
+    async createCheckoutSession({body}, res){
         try{
             /*
             req.body structure:
 
             {
-                items{
-                    name: String,
-                    priceInCents: Int,
+                cart{
+                    product{
+                        name: String,
+                        priceInCents: Int
+                    }
                     count: Int 
                 }
             }
             */
+           console.log("Body: ", body)
             const session = await stripe.checkout.sessions.create({
                 payment_method_types:['card'],
                 mode: 'payment',
-                line_items: req.body.items.map(item=>{
+                line_items: body.cart.map(item=>{
                     return{
                         price_data:{
                             currency:"usd",
                             product_data:{
-                                name: item.name
+                                name: item.product.name
                             },
-                            unit_amount: item.priceInCents
+                            unit_amount: item.product.priceInCents
                         },
                         quantity: item.count
                     }

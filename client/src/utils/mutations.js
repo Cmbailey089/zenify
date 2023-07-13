@@ -68,8 +68,11 @@ mutation DeleteUser($id: ID!) {
 }
 `
 export const ADD_TO_CART = gql`
-mutation AddToCart($items: Item_Bundle_I!) {
-  addToCart(items: $items) {
+mutation AddToCart($product: Product_I!, $count: Int!) {
+  addToCart(product: $product, count: $count) {
+    _id
+    email
+    username
     cart {
       count
       product {
@@ -77,8 +80,7 @@ mutation AddToCart($items: Item_Bundle_I!) {
         priceInCents
       }
     }
-    email
-    username
   }
 }
 `
+

@@ -17,6 +17,13 @@ query me{
     _id
     username
     email
+    cart {
+      count
+      product {
+        name
+        priceInCents
+      }
+    }
   }
 }
 `
@@ -71,3 +78,13 @@ query SearchResults($title: String!, $type: String!, $tags: [String]) {
   }
 }
 `;
+
+export const GATHER_PRODUCTS = gql`
+query GetProducts {
+  getProducts {
+    _id
+    name
+    priceInCents
+  }
+}
+`

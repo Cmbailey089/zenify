@@ -16,8 +16,9 @@ const typeDefs = gql`
         addResult(title: String!, type: String!, payload: Video_Input!, tags: [String]): Result
         deleteResult(_id: ID!): Result
         deleteUser(_id: ID!): User
-        addToCart(items: Item_Bundle_I!): User
+        addToCart(product: Product_I!, count:Int!): User
         addProduct(name: String!, priceInCents: Int!): Product
+        getCheckout(cart: [Item_Bundle_I]): String
     }
 
     type User {
