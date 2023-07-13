@@ -3,7 +3,7 @@
 # Zenify
 ===================================================
 ## Description
- Introducing Zenify, the ultimate stress relief app designed to help you find tranquility in the midst of a hectic world. With Zenify, you can access a wide range of meditation and mindfulness exercises tailored to your specific needs. Whether you’re looking to improve sleep or reduce stress Zenify is there for you!
+ Introducing Zenify, the ultimate stress relief app designed to help you find tranquility in the midst of a hectic world. With Zenify, you can access a wide range of meditation and mindfulness exercises tailored to your specific needs. Whether you’re looking to improve sleep or reduce stress Zenify is there for you! Go ahead give it a [try](https://whispering-sea-09039-50a149ea49a2.herokuapp.com/)!
 ***
 ## Table of contents
 - [Technologies](#technologies)
