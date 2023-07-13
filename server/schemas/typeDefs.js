@@ -22,6 +22,7 @@ const typeDefs = gql`
         username: String!
         email: String!
         password: String!
+        notes: [Note]
     }
 
     input Video_Input {
@@ -53,6 +54,12 @@ const typeDefs = gql`
     input Type {
         _id: ID
         name: String!
+    }
+
+    type Note {
+        noteText: String!
+        stress: String!
+        createdAt: String
     }
 `
 module.exports = typeDefs

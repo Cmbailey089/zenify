@@ -67,3 +67,17 @@ mutation DeleteUser($id: ID!) {
   }
 }
 `
+
+export const ADD_NOTE = gql`
+mutation addNote($userId: ID!, $noteText: String!) {
+  addNote(userId: $userId, noteText: $noteText) {
+    _id
+    email
+    username
+    note {
+      noteText
+      stress
+      createdAt
+    }
+  }
+}`
