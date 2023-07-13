@@ -5,6 +5,7 @@ import {GATHER_PRODUCTS, QUERY_ME} from '../../utils/queries'
 import {ADD_TO_CART} from '../../utils/mutations'
 import { useQuery, useMutation } from '@apollo/client';
 import Auth from '../../utils/auth';
+import axios from 'axios'
 
 const Shop = ()=>{
     const [form, setForm] = useState('')
@@ -49,17 +50,27 @@ const Shop = ()=>{
         //console.log(currentCart)
         console.log(Auth.getToken())
         try{
-            const response = await fetch("http://localhost:3001/api/payment",{
-                method:"POST",
-                mode:"no-cors",
-                credentials: "include",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${Auth.getToken()}`
-                  },
-                body: JSON.stringify({cart:me.cart})
+            // const response = await fetch("http://localhost:3001/api/payment",{
+            //     method:"POST",
+            //     mode:"no-cors",
+            //     credentials: "same-origin",
+            //     headers: {
+            //         "Content-Type": "application/json",
+            //         "Authorization": `Bearer ${Auth.getToken()}`
+            //       },
+            //     body: JSON.stringify({cart:me.cart})
+            // })
+            // console.log(await response.method)
+            axios.post(
+                'http://localhost:3001/api/payment',
+                {
+                    cart:[...me.cart]
+                }
+            ).then(res=>{
+                console.log(res.data.url)
+                window.location.replace(res.data.url)
             })
-            console.log(await response.method)
+
         }catch(err){
             console.log(JSON.stringify(err))
         }

@@ -1,5 +1,5 @@
-require("dotenv").config()
-const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
+require('dotenv').config()
+const stripe = require('stripe')("sk_test_51NSq68KJuT8DkAERfjYQftYyzJAnws0OMtluvX9V8GPHtLsgpc2OuNqb4mmbW91uVIjaUn2k6xxeQHMG4wS3jiNE00YtnmKQmU")
 
 module.exports = {
     async createCheckoutSession({body}, res){
@@ -18,6 +18,8 @@ module.exports = {
             }
             */
            console.log("Body: ", body)
+           console.log("Cart: ", body.cart)
+           console.log(process.env.STRIPE_PRIVATE_KEY)
             const session = await stripe.checkout.sessions.create({
                 payment_method_types:['card'],
                 mode: 'payment',
@@ -33,8 +35,8 @@ module.exports = {
                         quantity: item.count
                     }
                 }),
-                success_url: `${process.env.SERVER_URL}`,
-                cancel_url: `${process.env.SERVER_URL}`
+                success_url: `http://localhost:3000/`,
+                cancel_url: `http://localhost:3000/`
             })
             res.status(201).json(session)
         }catch(err){
