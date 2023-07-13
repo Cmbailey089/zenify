@@ -15,6 +15,7 @@ const typeDefs = gql`
         addResult(title: String!, type: String!, payload: Video_Input!, tags: [String]): Result
         deleteResult(_id: ID!): Result
         deleteUser(_id: ID!): User
+        addNote(UserId: ID!, noteText: String!): User
     }
 
     type User {
