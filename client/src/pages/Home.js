@@ -10,7 +10,7 @@ const Home = ({ loggedIn }) => {
         <img src={backgroundImg} alt="Background" />
       </div>
       <div className="content">
-        <h1>Welcome to the Stress Relief Application</h1>
+        <h1 className="animate-fade-in">Welcome to the Stress Relief Application</h1>
         <p>
           Discover various techniques and resources to manage stress and find relaxation in your daily life. Our application offers a range of stress relief practices, including meditation, breathing exercises, mindfulness, and more.
         </p>
