@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const Box = styled.div`
   padding: 0px 0px;
   background: black;
-  position: relative;
+  position: fixed;
   bottom: 0;
   width: 100%;
 
