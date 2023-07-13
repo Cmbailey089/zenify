@@ -12,6 +12,11 @@ import {
 import VideoLogo from "../Navbar/VideoLogo";
 
 const Footer = () => {
+  const handleDeleteUser = () => {
+    // Code to delete the user goes here
+    console.log("User deleted");
+  };
+
   return (
     <Box>
       <Container>
@@ -33,6 +38,11 @@ const Footer = () => {
             >
               GitHub
             </FooterLink>
+          </Column>
+
+          <Column>
+            <Heading>Delete User</Heading>
+            <AimButton onClick={handleDeleteUser}>Delete</AimButton>
           </Column>
         </Row>
       </Container>

@@ -1,4 +1,3 @@
-// TODO: Implement this file
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
@@ -19,6 +18,7 @@ const typeDefs = gql`
         addToCart(product: Product_I!, count:Int!): User
         addProduct(name: String!, priceInCents: Int!): Product
         getCheckout(cart: [Item_Bundle_I]): String
+        addNote(UserId: ID!, noteText: String!): User
     }
 
     type User {
@@ -27,14 +27,15 @@ const typeDefs = gql`
         email: String!
         password: String!
         cart: [Item_Bundle_O]
+        notes: [Note]
     }
 
-    input Video_Input {
-        _id: ID
-        title: String!
-       url:String!
-       tags:[String]
-    }
+  input Video_Input {
+    _id: ID
+    title: String!
+    url: String!
+    tags: [String]
+  }
 
     input Product_I{
         _id: ID
@@ -67,22 +68,31 @@ const typeDefs = gql`
        tags:[String]
     }
 
-    type Auth {
-        token: String!
-        user: User!
-    }
+  type Auth {
+    token: String!
+    user: User!
+  }
 
-    type Result {
-        _id: ID!
-        title: String!
-        type: String!
-        payload: Video_Output!
-        tags:[String]
-    }
-    input Type {
-        _id: ID
-        name: String!
-    }
-`
-module.exports = typeDefs
+  type Result {
+    _id: ID!
+    title: String!
+    type: String!
+    payload: Video_Output!
+    tags: [String]
+  }
+
+  input Type {
+    _id: ID
+    name: String!
+  }
+
+  type Note {
+    noteText: String!
+    stress: String!
+    createdAt: String
+  }
+`;
+
+module.exports = typeDefs;
+
 

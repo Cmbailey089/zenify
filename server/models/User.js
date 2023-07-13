@@ -22,6 +22,22 @@ const userSchema = new Schema({
     {
       type: cartSchema
     }
+  ],
+  notes: [
+    {
+      noteText: {
+        type: String,
+        required: true,
+      },
+      stress: {
+        type: String,
+      },
+      createdAt: {
+        type: String,
+        default: Date.now
+      }
+    
+    }
   ]
 },
  // set this to use virtual below

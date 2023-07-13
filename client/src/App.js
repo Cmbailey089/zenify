@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import {
+  ApolloClient,
+  ApolloProvider,
+  InMemoryCache,
+  createHttpLink,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import SignUp from "./components/Signup/Signup";
@@ -18,15 +23,15 @@ import Tips from "./components/Tips/Tips";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
@@ -41,10 +46,10 @@ const App = () => {
   const [username, setUsername] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem('id_token');
+    const token = localStorage.getItem("id_token");
     if (token) {
       setLoggedIn(true);
-      setUsername(localStorage.getItem('username'));
+      setUsername(localStorage.getItem("username"));
     } else {
       setLoggedIn(false);
       setUsername(null);
@@ -52,30 +57,34 @@ const App = () => {
   }, []);
 
   const handleSignIn = (token, username) => {
-    localStorage.setItem('id_token', token);
-    localStorage.setItem('username', username || '');
+    localStorage.setItem("id_token", token);
+    localStorage.setItem("username", username || "");
     setLoggedIn(true);
-    setUsername(username || '');
-    console.log('User signed in:', { username });
-    console.log('Token:', token);
+    setUsername(username || "");
+    console.log("User signed in:", { username });
+    console.log("Token:", token);
   };
 
   const handleSignOut = () => {
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('username');
+    localStorage.removeItem("id_token");
+    localStorage.removeItem("username");
     setLoggedIn(false);
     setUsername(null);
-    console.log('User signed out');
+    console.log("User signed out");
   };
 
-  console.log('App - loggedIn:', loggedIn);
-  console.log('App - username:', username);
+  console.log("App - loggedIn:", loggedIn);
+  console.log("App - username:", username);
 
   return (
     <ApolloProvider client={client}>
-      <Router>
+      <BrowserRouter>
         <div>
-          <Navbar loggedIn={loggedIn} username={username} handleSignOut={handleSignOut} />
+          <Navbar
+            loggedIn={loggedIn}
+            username={username}
+            handleSignOut={handleSignOut}
+          />
           <Route
             render={({ location }) => (
               <TransitionGroup>
@@ -85,7 +94,11 @@ const App = () => {
                   classNames="page-transition"
                 >
                   <Switch location={location}>
-                    <Route exact path="/" render={() => <Home loggedIn={loggedIn} />} />
+                    <Route
+                      exact
+                      path="/"
+                      render={() => <Home loggedIn={loggedIn} />}
+                    />
                     <Route path="/about" component={About} />
                     <Route path="/videos" component={Videos} />
                     <Route path="/shop" component={Shop} />
@@ -106,7 +119,7 @@ const App = () => {
           />
           <Footer />
         </div>
-      </Router>
+      </BrowserRouter>
     </ApolloProvider>
   );
 };
